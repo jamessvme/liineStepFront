@@ -8,7 +8,6 @@ export default function VerifyEmailForm() {
   const router = useRouter();
   const { update } = useSession();
   const searchParams = useSearchParams();
-
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
@@ -32,8 +31,9 @@ export default function VerifyEmailForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <button type="submit">Verify</button>
+    <form onSubmit={handleSubmit} className="mt-4">
+      <button type="submit" className="px-2 py-2 text-blue-200 bg-blue-600 rounded">Click to Verify Email</button>
     </form>
+
   );
 }
