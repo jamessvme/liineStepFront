@@ -39,7 +39,6 @@ export const authOptions: NextAuthOptions = {
           }
 
           const data: { user: User; access_token: string } = await response.json();
-
           if (!data?.access_token) {
             throw response;
           }
@@ -94,11 +93,14 @@ export const authOptions: NextAuthOptions = {
       if (token.error) {
         throw new Error("Refresh token has expired");
       }
-
       session.accessToken = token.accessToken;
       session.user.name = token.name || "";
       session.user.email = token.email || "";
+      session.user.avatar = token.avatar || "/images/user/defaultAvatar.png";
+      session.user.phone_number = token.phone_number || "";
       session.user.email_verified_at = token.email_verified_at;
+      session.user.title = token.title;
+      session.user.aboutMe = token.aboutMe;
 
       return session;
     },
